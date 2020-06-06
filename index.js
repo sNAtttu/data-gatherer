@@ -9,6 +9,11 @@ const client = new CosmosClient({ endpoint, key });
 const database = client.database(databaseId);
 const container = database.container(containerId);
 
+if(!config) {
+    console.log("Configuration file is missing");
+    return;
+}
+
 // Make sure Tasks database is already setup. If not, create it.
 createDatabase(client, databaseId, containerId)
     .then(() => {
