@@ -21,7 +21,10 @@ createDatabase(client, databaseId, containerId)
             .then(async result => {
                 // Store the test result to the cosmos db
                 await container.items.create(result);
-            });
+            })
+            .catch(e => {
+                console.log(e);
+            })
     });
 
 
